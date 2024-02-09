@@ -6,14 +6,14 @@ import (
 	"time"
 
 	"github.com/rs/zerolog"
-	di "github.com/samber/do"
+	di "github.com/samber/do/v2"
 )
 
 type Service struct {
 	zerolog.Logger
 }
 
-func New(*di.Injector) (*Service, error) {
+func New(di.Injector) (*Service, error) {
 	zerolog.TimeFieldFormat = zerolog.TimeFormatUnix
 	log := zerolog.New(os.Stdout).With().Timestamp().Logger()
 	serv := Service{log}

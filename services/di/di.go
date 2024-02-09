@@ -1,14 +1,14 @@
 package di
 
 import (
-	di "github.com/samber/do"
+	di "github.com/samber/do/v2"
 )
 
 type Service interface {
-	Get() *di.Injector
+	Get() di.Injector
 }
 
-func New(i *di.Injector) (Service, error) {
+func New(i di.Injector) (Service, error) {
 	s := ServiceImpl{
 		injector: i,
 	}
@@ -16,13 +16,13 @@ func New(i *di.Injector) (Service, error) {
 }
 
 type ServiceImpl struct {
-	injector *di.Injector
+	injector di.Injector
 }
 
 func (s *ServiceImpl) Start() {
 }
 
-func (s *ServiceImpl) Get() *di.Injector {
+func (s *ServiceImpl) Get() di.Injector {
 	return s.injector
 }
 

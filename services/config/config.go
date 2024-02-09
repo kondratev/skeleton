@@ -2,7 +2,7 @@ package config
 
 import (
 	env "github.com/caarlos0/env/v7"
-	di "github.com/samber/do"
+	di "github.com/samber/do/v2"
 
 	"github.com/kondratev/skeleton/services/logger"
 )
@@ -22,7 +22,7 @@ func Load(cfg *Service) error {
 	return err
 }
 
-func New(i *di.Injector) (*Service, error) {
+func New(i di.Injector) (*Service, error) {
 	log := di.MustInvoke[*logger.Service](i)
 	cfg := Service{}
 	cfg.log = log

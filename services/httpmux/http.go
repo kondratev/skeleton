@@ -11,7 +11,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/oklog/ulid"
 	"github.com/rs/zerolog"
-	di "github.com/samber/do"
+	di "github.com/samber/do/v2"
 
 	"github.com/kondratev/skeleton/internal/consts"
 	"github.com/kondratev/skeleton/services/config"
@@ -25,7 +25,7 @@ type Service interface {
 	Server() *gin.Engine
 }
 
-func New(i *di.Injector) (Service, error) {
+func New(i di.Injector) (Service, error) {
 	cfg := di.MustInvoke[*config.Service](i)
 	log := di.MustInvoke[*logger.Service](i)
 

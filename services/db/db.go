@@ -7,7 +7,7 @@ import (
 
 	_ "github.com/jackc/pgx/v5/stdlib" // pgx postgresql driver
 	"github.com/jmoiron/sqlx"
-	di "github.com/samber/do"
+	di "github.com/samber/do/v2"
 
 	"github.com/kondratev/skeleton/services/config"
 	"github.com/kondratev/skeleton/services/logger"
@@ -34,7 +34,7 @@ type ServiceImpl struct {
 	cfg    *config.Service
 }
 
-func New(i *di.Injector) (Service, error) {
+func New(i di.Injector) (Service, error) {
 	log := di.MustInvoke[*logger.Service](i)
 	cfg := di.MustInvoke[*config.Service](i)
 

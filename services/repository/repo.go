@@ -2,7 +2,7 @@ package repository
 
 import (
 	"github.com/jmoiron/sqlx"
-	di "github.com/samber/do"
+	di "github.com/samber/do/v2"
 
 	"github.com/kondratev/skeleton/internal/models/repo"
 	"github.com/kondratev/skeleton/services/db"
@@ -21,7 +21,7 @@ type ServiceImpl struct {
 	sql *sqlx.DB
 }
 
-func New(i *di.Injector) (Service, error) {
+func New(i di.Injector) (Service, error) {
 	loggerService := di.MustInvoke[*logger.Service](i)
 	dbService := di.MustInvoke[db.Service](i)
 

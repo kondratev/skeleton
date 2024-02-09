@@ -5,7 +5,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
-	di "github.com/samber/do"
+	di "github.com/samber/do/v2"
 
 	"github.com/kondratev/skeleton/services/config"
 	"github.com/kondratev/skeleton/services/httpmux"
@@ -27,7 +27,7 @@ type ServiceImpl struct {
 	repo repository.Service
 }
 
-func New(i *di.Injector) (Service, error) {
+func New(i di.Injector) (Service, error) {
 	loggerService := di.MustInvoke[*logger.Service](i)
 	cfg := di.MustInvoke[*config.Service](i)
 	httpService := di.MustInvoke[httpmux.Service](i)

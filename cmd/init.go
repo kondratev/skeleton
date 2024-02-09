@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/samber/do"
+	"github.com/samber/do/v2"
 
 	"github.com/kondratev/skeleton/services/closer"
 	"github.com/kondratev/skeleton/services/config"
@@ -13,7 +13,7 @@ import (
 	"github.com/kondratev/skeleton/services/repository"
 )
 
-func registerProviders(i *do.Injector) {
+func registerProviders(i do.Injector) {
 	do.Provide(i, closer.New)
 	do.Provide(i, logger.New)
 	do.Provide(i, config.New)
@@ -24,7 +24,7 @@ func registerProviders(i *do.Injector) {
 	do.Provide(i, repository.New)
 }
 
-func startServices(i *do.Injector) {
+func startServices(i do.Injector) {
 	clo := do.MustInvoke[*closer.Service](i)
 	log := do.MustInvoke[*logger.Service](i)
 	cfg := do.MustInvoke[*config.Service](i)
